@@ -2,22 +2,32 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        Count: 0,
-        tags :[]  
+        Count: 0,  
     };
-    rendertags(){
-        if(this.state.tags.length === 0)return <p>There are no tags!</p>;
-        return<ul>{this.state.tags.map(tags => <li key={tags}>{tags}</li>)}</ul>;
+    handleincrement(){
+        console.log("incremet click",this)
     }
     render() {
         return (
         <div>
-        {this.state.tags.length === 0 && 'please create a new tag!'}
-        {this.rendertags()}
+        <span className={this.getbadgeClasses()}>{this.formatCount()}</span>
+        <button 
+        onClick={this.handleincrement} 
+        className="btn btn-danger btn-sm">
+        increment</button>
         </div>
         );
     }
-    
- }
+    getbadgeClasses() {
+        let classes = "badge m-2 badge";
+        classes += this.state.Count === 0 ? "warning" : "primary";
+        return classes;
+    }
+
+    formatCount(){
+        const {Count} = this.state;
+        return Count === 0 ? "zero" : Count;
+    }
+}
  
 export default Counter;
