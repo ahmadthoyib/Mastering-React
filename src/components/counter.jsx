@@ -4,7 +4,12 @@ class Counter extends Component {
     state = {
         Count: 0,  
     };
-    handleincrement(){
+    /*constructor(){
+        super();
+        this.handleincrement = this.handleincrement.bind(this);
+    }*/
+
+    handleincrement = () =>{
         console.log("incremet click",this)
     }
     render() {
